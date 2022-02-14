@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Geometric/Geometric.iml" filepath="$PROJECT_DIR$/Geometric/Geometric.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MD2-JAVA-Inheristance.iml" filepath="$PROJECT_DIR$/MD2-JAVA-Inheristance.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ManagerBook/ManagerBook.iml" filepath="$PROJECT_DIR$/ManagerBook/ManagerBook.iml" />
+    </modules>
+  </component>
+</project>
