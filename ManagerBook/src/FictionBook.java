@@ -1,4 +1,4 @@
-public class FictionBook extends Book{
+public class FictionBook extends Book {
     private String category;
 
     public FictionBook() {
