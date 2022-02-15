@@ -1,8 +1,12 @@
-public class FictonBook extends Book{
+public class FictionBook extends Book{
     private String category;
 
-    public FictonBook(String bookCode, String name, int price, String author) {
+    public FictionBook() {
+    }
+
+    public FictionBook(String bookCode, String name, int price, String author, String category) {
         super(bookCode, name, price, author);
+        this.category = category;
     }
 
     public String getCategory() {
