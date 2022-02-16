@@ -17,15 +17,52 @@ public class Main {
 
         Book[] listBooks = {f1, f2, f3, f4, f5, p1, p2, p3, p4, p5};
 
-        getTotalPrice(listBooks);
-        countLangage(listBooks);
-        countCategory(listBooks);
-        countPriceLessThan100(listBooks);
-
-        Scanner inputName = new Scanner(System.in);
-        System.out.println("Nhập tên sách cần tìm: ");
-        String name = inputName.nextLine();
-        findPriceBook(listBooks, name);
+        int choice = -1;
+        Scanner inputChoice = new Scanner(System.in);
+        while (choice != 0) {
+            System.out.println("Menu");
+            System.out.println("1. Tổng giá sách: ");
+            System.out.println("2. Đếm sách Programming theo ngôn ngữ");
+            System.out.println("3. Đếm sách Fiction theo thể loại");
+            System.out.println("4. Đếm sách Fiction trong khoảng giá");
+            System.out.println("5. Tìm giá sách theo tên: ");
+            System.out.println("6. Exit");
+            System.out.println("Enter your choice: ");
+            choice = inputChoice.nextInt();
+            switch (choice) {
+                case 1:
+                    getTotalPrice(listBooks);
+                    break;
+                case 2:
+                    Scanner inputName = new Scanner(System.in);
+                    System.out.println("Nhập tên sách cần tìm: ");
+                    String name = inputName.nextLine();
+                    findPriceBook(listBooks, name);
+                    break;
+                case 3:
+                    Scanner inputLanguage = new Scanner(System.in);
+                    System.out.println("Nhập tên language cần đếm trong Programming Book: ");
+                    String language = inputLanguage.nextLine();
+                    countByLanguage(listBooks, language);
+                    break;
+                case 4:
+                    Scanner inputCategory = new Scanner(System.in);
+                    System.out.println("Nhập tên category cần đếm trong Fiction Book: ");
+                    String category = inputCategory.nextLine();
+                    countByCategory(listBooks, category);
+                    break;
+                case 5:
+                    Scanner inputNumber = new Scanner(System.in);
+                    System.out.println("Nhập giá trị sách cần đếm trong Fiction Book: ");
+                    int number = inputNumber.nextInt();
+                    countPriceLessThanValue(listBooks, number);
+                    break;
+                case 0:
+                    System.exit(0 );
+                default:
+                    System.out.println("Không có lựa chọn này!");
+            }
+        }
     }
 
     public static void getTotalPrice(Book[] arr) {
@@ -36,12 +73,13 @@ public class Main {
         System.out.println("Tổng giá của 10 cuốn sách là: " + sum);
     }
 
-    public static void countLangage(Book[] arr) {
+    public static void countByLanguage(Book[] arr, String language) {
         int count = 0;
         for (Book b : arr
         ) {
             if (b instanceof ProgrammingBook) {
-                if (((ProgrammingBook) b).getLanguage() == "JAVA") {
+                String check = ((ProgrammingBook) b).getLanguage();
+                if (check.equals(language)) {
                     count++;
                 }
             }
@@ -49,12 +87,13 @@ public class Main {
         System.out.println("Số sách có language JAVA là: " + count);
     }
 
-    public static void countCategory(Book[] arr) {
+    public static void countByCategory(Book[] arr, String category) {
         int count = 0;
         for (Book b : arr
         ) {
             if (b instanceof FictionBook) {
-                if (((FictionBook) b).getCategory() == "Vien Tuong 1") {
+                String check = ((FictionBook) b).getCategory();
+                if (check.equals(category)) {
                     count++;
                 }
             }
@@ -62,12 +101,12 @@ public class Main {
         System.out.println("Số sách có category là 'Viễn tưởng' 1 là: " + count);
     }
 
-    public static void countPriceLessThan100(Book[] arr) {
+    public static void countPriceLessThanValue(Book[] arr, int value) {
         int count = 0;
         for (Book b : arr
         ) {
             if (b instanceof FictionBook) {
-                if (b.getPrice() < 100) {
+                if (b.getPrice() < value) {
                     count++;
                 }
             }
